@@ -1,1 +1,1 @@
-FROM manifoldai/docker-ml-dev:1.0
+FROM manifoldai/orbyter-ml-dev:1.2
