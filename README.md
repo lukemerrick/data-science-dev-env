@@ -10,7 +10,7 @@
 *http://cookiecutter.readthedocs.io/en/latest/readme.html*
 
 
-This cookiecutter is used in conjunction with a base development image available in [Docker Hub](https://hub.docker.com/r/manifoldai/docker-ml-dev/) to provide an out-of-the-box ready environment for many Data Science and Machine Learning project use cases.
+This cookiecutter is used in conjunction with a base development image available in [Docker Hub](https://hub.docker.com/r/manifoldai/orbyter-ml-dev/) to provide an out-of-the-box ready environment for many Data Science and Machine Learning project use cases.
 After running this cookiecutter and the provided start script a developer will have a local development setup that looks like this: 
 
 ![docker local dev](https://s3-us-west-1.amazonaws.com/manifold-public-no-vpn/torus_local_dev.png)
@@ -65,7 +65,7 @@ By using containers early in the development cycle you can remove a lot of the c
 7. Using any browser access your notebook at localhost:{port}
 8. Start working!
 
-For more details on what packages are available pre-installed in the base image see the manifoldai/docker-ml-dev repository page on [Docker Hub](https://hub.docker.com/r/manifoldai/docker-ml-dev/).
+For more details on what packages are available pre-installed in the base image see the manifoldai/orbyter-ml-dev repository page on [Docker Hub](https://hub.docker.com/r/manifoldai/orybter-ml-dev/).
 ### Project Structure
 The directory structure of your new project looks like this: 
 
