@@ -18,11 +18,11 @@ DOCKER_EXEC = docker-compose exec $(DOCKER_NAME)
 
 ## Run Docker Image
 start:
-	docker-compose up -d $(DOCKER_NAME)-gpu
+	docker-compose -f docker-compose.yml up -d
 
 ## Run Docker Image (with only CPU)
 start-cpu:
-	docker-compose up -d $(DOCKER_NAME)-cpu
+	docker-compose -f docker-compose-cpu.yml up -d
 
 
 ## Stop Docker Container
