@@ -9,7 +9,7 @@ BUCKET = {{ cookiecutter.s3_bucket }}
 PROFILE = {{ cookiecutter.aws_profile }}
 PROJECT_NAME = {{ cookiecutter.repo_name }}
 DOCKER_NAME = jupyterlab-server
-PYTHON_INTERPRETER = docker-compose exec $(DOCKER_NAME) python3
+DOCKER_EXEC = docker-compose exec $(DOCKER_NAME)
 
 
 #################################################################################
@@ -18,20 +18,20 @@ PYTHON_INTERPRETER = docker-compose exec $(DOCKER_NAME) python3
 
 ## Run Docker Image
 start:
-	docker-compose up -d
+	docker-compose up -d $(DOCKER_NAME)-gpu
+
+## Run Docker Image (with only CPU)
+start-cpu:
+	docker-compose up -d $(DOCKER_NAME)-cpu
+
 
 ## Stop Docker Container
 stop:
-	docker-compose down $(DOCKER_NAME)
-
-## Install Python Dependencies
-requirements: test_environment
-	pip install -U pip setuptools wheel
-	pip install -r requirements.txt
+	docker-compose down
 
 ## Make Dataset
-data: requirements
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py
+data:
+	$(DOCKER_EXEC) python src/data/make_dataset.py
 
 ## Delete all compiled Python files
 clean:
@@ -45,22 +45,22 @@ docker-clean:
 
 ## Lint using flake8
 lint:
-	flake8 src
+	$(DOCKER_EXEC) flake8 src
 
 ## Upload Data to S3
 sync_data_to_s3:
 ifeq (default,$(PROFILE))
-	aws s3 sync data/ s3://$(BUCKET)/data/
+	$(DOCKER_EXEC) aws s3 sync data/ s3://$(BUCKET)/data/
 else
-	aws s3 sync data/ s3://$(BUCKET)/data/ --profile $(PROFILE)
+	$(DOCKER_EXEC) aws s3 sync data/ s3://$(BUCKET)/data/ --profile $(PROFILE)
 endif
 
 ## Download Data from S3
 sync_data_from_s3:
 ifeq (default,$(PROFILE))
-	aws s3 sync s3://$(BUCKET)/data/ data/
+	$(DOCKER_EXEC) aws s3 sync s3://$(BUCKET)/data/ data/
 else
-	aws s3 sync s3://$(BUCKET)/data/ data/ --profile $(PROFILE)
+	$(DOCKER_EXEC) aws s3 sync s3://$(BUCKET)/data/ data/ --profile $(PROFILE)
 endif
 
 #################################################################################
