@@ -25,7 +25,8 @@ $ make dockerfile
     [with GPU] $ make start
     [CPU only] $ make start-cpu
     ```
-5. Using any browser access jupyter lab at localhost:8888
+5. Using any browser access Jupyter lab at `localhost:8888/lab` (or stick to the 
+old Jupyter notebook tool by visiting `localhost:8888/tree`)
 6. Start working!
 7. Shut down the docker image
     ``` bash
@@ -34,23 +35,31 @@ $ make dockerfile
     ```
     
 ## Modifying Requirements
+
+#### Installing Python Packages
+If you just need to add a python requirement, you can add that to the `requirements.txt` file
+and rebuild the Docker image without needing to regenerate the Dockerfile. If versions are not
+explicitly managed in the requirements file, rebuilding the Docker image may cause some packages
+to be updated since the install will likely default to the most recent version, so do be careful
+to specify version numbers in `requirements.txt` if this might cause issues for you.
+``` bash
+$ make build
+```
+
+#### Deep Learning Frameworks
 If you need to install a new deep learning framework or change the CUDA/CUDNN version used,
 edit `deep_learning_requirements.txt` file, then regenerate the Dockerfile. Lastly, rebuild
 the docker image. If you regenerate the Dockerfile, the versions of the deep learning
-frameworks installed may be updated automatically.
+frameworks installed may be updated automatically. If that update would be problematic for you,
+you will instead need to edit the Dockerfile by hand instead.
 
 ``` bash
 $ make dockerfile build
 ```
 
-If you just need to add a python requirement, you can add that to the `requirements.txt` file
-and rebuild the docker image without needing to regenerate the Dockerfile.
-``` bash
-$ make build
-```
 
-Note: if you change project requirements or regenerate the Dockerfile, be sure to commit your
-changes to these files in git!
+***Note: if you change project requirements and/or regenerate the Dockerfile, be sure to commit your
+changes to these files in git!***
 
 Project Organization
 ------------
