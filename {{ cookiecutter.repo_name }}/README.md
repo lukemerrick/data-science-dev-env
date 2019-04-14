@@ -3,6 +3,28 @@
 
 {{cookiecutter.description}}
 
+
+## Getting Started
+1. Install Docker: 
+    - For Mac: https://store.docker.com/editions/community/docker-ce-desktop-mac
+    - For Windows: https://store.docker.com/editions/community/docker-ce-desktop-windows
+    - For Linux: Go to this page and choose the appropriate install for your Linux distro: https://www.docker.com/community-edition
+2. Install Docker Compose (https://docs.docker.com/compose/install/#install-compose):
+3. Start the Docker container:
+    ``` bash
+    $ make start
+    ```
+4. After the project image builds check which host port is being forwarded to the Jupyter notebook server inside the running container:
+    ``` bash
+    $ docker ps 
+    ```
+5. Using any browser access jupyter lab at localhost:{port}
+6. Start working!
+7. Shut down the docker image
+    ``` bash
+    $ make stop
+    ```
+
 Project Organization
 ------------
 

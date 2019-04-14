@@ -8,13 +8,9 @@ PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 BUCKET = {{ cookiecutter.s3_bucket }}
 PROFILE = {{ cookiecutter.aws_profile }}
 PROJECT_NAME = {{ cookiecutter.repo_name }}
-PYTHON_INTERPRETER = {{ cookiecutter.python_interpreter }}
+DOCKER_NAME = jupyterlab-server
+PYTHON_INTERPRETER = docker-compose exec $(DOCKER_NAME) python3
 
-ifeq (,$(shell which conda))
-HAS_CONDA=False
-else
-HAS_CONDA=True
-endif
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -23,6 +19,10 @@ endif
 ## Run Docker Image
 start:
 	docker-compose up -d
+
+## Stop Docker Container
+stop:
+	docker-compose down $(DOCKER_NAME)
 
 ## Install Python Dependencies
 requirements: test_environment
