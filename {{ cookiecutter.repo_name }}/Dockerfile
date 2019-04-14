@@ -58,15 +58,6 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     $PIP_INSTALL \
         setuptools \
         && \
-    $PIP_INSTALL \
-        numpy \
-        scipy \
-        pandas \
-        cloudpickle \
-        scikit-learn \
-        matplotlib \
-        Cython \
-        && \
 
 # ==================================================================
 # pytorch
