@@ -12,19 +12,19 @@ CUDNN=7
 # (like fastai) through the regular requirements.txt file
 
 #<START>
-#boost
-#caffe
-#chainer
-#cntk
-#darknet
+# boost
+# caffe
+# chainer
+# cntk
+# darknet
 keras
-#lasagne
+# lasagne
 mxnet
 onnx
 opencv
 pytorch
-#sonnet
+# sonnet
 tensorflow
-#theano
-#torch
+# theano
+# torch
 #<END>

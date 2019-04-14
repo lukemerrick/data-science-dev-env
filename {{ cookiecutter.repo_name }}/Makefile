@@ -20,6 +20,10 @@ DOCKER_EXEC = docker-compose exec $(DOCKER_NAME)
 dockerfile:
 	cd docker && sh generate_dockerfile.sh
 
+## Rebuild Docker Image
+build:
+	docker build .
+
 ## Run Docker Image
 start:
 	docker-compose -f docker/docker-compose.yml up -d
@@ -28,10 +32,13 @@ start:
 start-cpu:
 	docker-compose -f docker/docker-compose-cpu.yml up -d
 
-
 ## Stop Docker Container
 stop:
-	docker-compose down
+	docker-compose -f docker/docker-compose.yml down
+
+## Stop Docker Container (image for with only CPU)
+stop-cpu:
+	docker-compose -f docker/docker-compose-cpu.yml down
 
 ## Make Dataset
 data:

@@ -2,12 +2,12 @@ version: '3'
 services:
    jupyterlab-server-gpu:
       container_name: jupyterlab-server
-      build: .
+      build: ..
       ports:
          - "127.0.0.1::8888:8888"
       volumes:
-         - ./:/mnt
-      entrypoint: bash -c "cd /mnt && jupyter lab --NotebookApp.token='' --ip=0.0.0.0 --allow-root"
+         - ../:/mnt
+      entrypoint: sh -c "jupyter lab --NotebookApp.token='' --ip=0.0.0.0 --no-browser --notebook-dir=/mnt --allow-root"
       stdin_open: true
       tty: true
       runtime: nvidia

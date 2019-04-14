@@ -29,44 +29,67 @@ $ make dockerfile
 6. Start working!
 7. Shut down the docker image
     ``` bash
-    $ make stop
+    [with GPU] $ make stop
+    [CPU only] $ make stop-cpu
     ```
+    
+## Modifying Requirements
+If you need to install a new deep learning framework or change the CUDA/CUDNN version used,
+edit `deep_learning_requirements.txt` file, then regenerate the Dockerfile. Lastly, rebuild
+the docker image. If you regenerate the Dockerfile, the versions of the deep learning
+frameworks installed may be updated automatically.
+
+``` bash
+$ make dockerfile build
+```
+
+If you just need to add a python requirement, you can add that to the `requirements.txt` file
+and rebuild the docker image without needing to regenerate the Dockerfile.
+``` bash
+$ make build
+```
+
+Note: if you change project requirements or regenerate the Dockerfile, be sure to commit your
+changes to these files in git!
 
 Project Organization
 ------------
 
     ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
+    ├── Makefile                         <- Makefile with commands like `make data` or `make train`
+    ├── README.md                        <- The top-level README for developers using this project.
     ├── data
-    │   ├── misc           <- Miscellaneous data stuff that does not fit in "raw" or "processed"
-    │   ├── processed      <- Data programatically derived from the raw data.
-    │   └── raw            <- The original, immutable data dump.
+    │   ├── misc                         <- Miscellaneous data stuff that does not fit in "raw" or "processed"
+    │   ├── processed                    <- Data programatically derived from the raw data.
+    │   └── raw                          <- The original, immutable data dump.
     │
-    ├── saved_models       <- Trained and serialized models, model predictions, or model summaries
+    ├── saved_models                     <- Trained and serialized models, model predictions, or model summaries
     │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
+    ├── notebooks                        <- Jupyter notebooks. Naming convention is a number (for ordering),
+    │                                       the creator's initials, and a short `-` delimited description, e.g.
+    │                                       `1.0-jqp-initial-data-exploration`.
     │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+    ├── references                       <- Data dictionaries, manuals, and all other explanatory materials.
     │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
+    ├── reports                          <- Generated analysis as HTML, PDF, LaTeX, etc.
+    │   └── figures                      <- Generated graphics and figures to be used in reporting
     │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
+    ├── requirements.txt                 <- The requirements file for reproducing the analysis environment, e.g.
+    │                                       generated with `pip freeze > requirements.txt`
     │
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
+    ├── deep_learning_requirements.txt   <- A requirements file specifically for the deep learning libraries
+    │                                       and GPU drivers installed
+    │
+    ├── src                              <- Source code for use in this project.
+    │   ├── __init__.py                  <- Makes src a Python module
     │   │
-    │   ├── data           <- Scripts/tools to download or generate data or engineer features
+    │   ├── data                         <- Scripts/tools to download or generate data or engineer features
     │   │   └── make_dataset.py
     │   │
-    │   └── learn          <- Scripts/tools to train/evaluate/execute/tune models and handle
-    │                         other learning actions
+    │   └── learn                        <- Scripts/tools to train/evaluate/execute/tune models and handle
+    │                                       other learning actions
     │
-    └── tox.ini            <- tox file with settings for running tox; see tox.testrun.org
+    └── tox.ini                          <- tox file with settings for running tox; see tox.testrun.org
 
 
 --------

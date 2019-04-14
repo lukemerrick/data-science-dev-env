@@ -16,4 +16,5 @@ cd ../../
 rm -rf deepo
 echo "> appending custom requirements.txt install code to dockerfile"
 cat dockerfile_addon.txt >> Dockerfile
+mv Dockerfile ../
 echo "> done"
