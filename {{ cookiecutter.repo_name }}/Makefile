@@ -16,13 +16,17 @@ DOCKER_EXEC = docker-compose exec $(DOCKER_NAME)
 # COMMANDS                                                                      #
 #################################################################################
 
+## Generate Dockerfile
+dockerfile:
+	cd docker && sh generate_dockerfile.sh
+
 ## Run Docker Image
 start:
-	docker-compose -f docker-compose.yml up -d
+	docker-compose -f docker/docker-compose.yml up -d
 
 ## Run Docker Image (with only CPU)
 start-cpu:
-	docker-compose -f docker-compose-cpu.yml up -d
+	docker-compose -f docker/docker-compose-cpu.yml up -d
 
 
 ## Stop Docker Container

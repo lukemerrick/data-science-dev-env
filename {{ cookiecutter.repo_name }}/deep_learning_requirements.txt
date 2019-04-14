@@ -1,0 +1,30 @@
+# Warning: do not remove the tags around the deep learning library list
+
+# You can modify the versions of CUDA / CUDNN libraries below:
+CUDA=10.0
+CUDNN=7
+
+# Comment/uncomment deep learning libraries below to enable/disable them
+# when generating the Dockerfile with `make dockerfile`
+
+# NOTE: only the below deep learning libraries can (and should) be installed
+# as part of the Dockerfile. You can attempt to install other libraries
+# (like fastai) through the regular requirements.txt file
+
+#<START>
+#boost
+#caffe
+#chainer
+#cntk
+#darknet
+keras
+#lasagne
+mxnet
+onnx
+opencv
+pytorch
+#sonnet
+tensorflow
+#theano
+#torch
+#<END>

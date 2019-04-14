@@ -5,6 +5,13 @@
 Please note that the dockerized experience is currently in development. Many commands in the
 Makefile may not work properly, CPU/GPU issues may exist, etc.
 
+## Dockerfile Setup
+If no Dockerfile has been generated (i.e. there is no file `docker/Dockerfile`) or if you
+would like to re-generate the file to user newer verssions of GPU drivers or deep learning
+libraries, run the Dockerfie generation command. You should commit this to version control once you create or update it.
+``` bash
+$ make dockerfile
+```
 
 ## Getting Started
 1. Install Docker: 
@@ -13,14 +20,14 @@ Makefile may not work properly, CPU/GPU issues may exist, etc.
     - For Linux: Go to this page and choose the appropriate install for your Linux distro: https://www.docker.com/community-edition
 2. Install Docker Compose (https://docs.docker.com/compose/install/#install-compose)
 3. (Only if the host has a GPU) Install nvidia-docker2 (https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0).
-3. Start the Docker container:
+4. Start the Docker container:
     ``` bash
     [with GPU] $ make start
     [CPU only] $ make start-cpu
     ```
-4. Using any browser access jupyter lab at localhost:8888
-5. Start working!
-6. Shut down the docker image
+5. Using any browser access jupyter lab at localhost:8888
+6. Start working!
+7. Shut down the docker image
     ``` bash
     $ make stop
     ```

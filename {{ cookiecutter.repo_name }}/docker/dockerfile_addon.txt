@@ -1,0 +1,18 @@
+# ==================================================================
+# other requirements from core_requirements.txt and requirements.txt
+# ------------------------------------------------------------------
+
+COPY core_requirements.txt /tmp/
+COPY ../requirements.txt /tmp/
+RUN PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
+    $PIP_INSTALL -r /tmp/core_requirements.txt && \
+    $PIP_INSTALL -r /tmp/requirements.txt && \
+
+# ==================================================================
+# config & cleanup
+# ------------------------------------------------------------------
+
+    ldconfig && \
+    apt-get clean && \
+    apt-get autoremove && \
+    rm -rf /var/lib/apt/lists/* /tmp/* ~/*
