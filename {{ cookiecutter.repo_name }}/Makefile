@@ -9,7 +9,7 @@ BUCKET = {{ cookiecutter.s3_bucket }}
 PROFILE = {{ cookiecutter.aws_profile }}
 PROJECT_NAME = {{ cookiecutter.repo_name }}
 DOCKER_NAME = jupyterlab-server
-DOCKER_EXEC = docker-compose exec $(DOCKER_NAME)
+DOCKER_EXEC = docker exec --workdir /mnt $(DOCKER_NAME)
 
 # if no GPU present, use the CPU docker compose config
 ifeq ($(command -v nvidia-smi 2>/dev/null),)
