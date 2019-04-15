@@ -22,16 +22,14 @@ $ make dockerfile
 3. (Only if the host has a GPU) Install nvidia-docker2 (https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0).
 4. Start the Docker container:
     ``` bash
-    [with GPU] $ make start
-    [CPU only] $ make start-cpu
+    $ make start
     ```
 5. Using any browser access Jupyter lab at `localhost:8888/lab` (or stick to the 
 old Jupyter notebook tool by visiting `localhost:8888/tree`)
 6. Start working!
 7. Shut down the docker image
     ``` bash
-    [with GPU] $ make stop
-    [CPU only] $ make stop-cpu
+    $ make stop
     ```
     
 ## Modifying Requirements

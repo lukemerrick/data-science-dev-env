@@ -29,7 +29,7 @@ dockerfile:
 
 ## Rebuild Docker Image
 build:
-	docker build .
+	docker-compose -f $(COMPOSE_FILE) build
 
 ## Run Docker Image
 start:
