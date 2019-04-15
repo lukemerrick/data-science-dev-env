@@ -11,6 +11,13 @@ PROJECT_NAME = {{ cookiecutter.repo_name }}
 DOCKER_NAME = jupyterlab-server
 DOCKER_EXEC = docker-compose exec $(DOCKER_NAME)
 
+# if no GPU present, use the CPU docker compose config
+ifeq ($(command -v nvidia-smi 2>/dev/null),)
+	COMPOSE_FILE = docker/docker-compose-cpu.yml
+else
+	COMPOSE_FILE = docker/docker-compose.yml
+endif
+
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -26,19 +33,11 @@ build:
 
 ## Run Docker Image
 start:
-	docker-compose -f docker/docker-compose.yml up -d
-
-## Run Docker Image (with only CPU)
-start-cpu:
-	docker-compose -f docker/docker-compose-cpu.yml up -d
+	docker-compose -f $(COMPOSE_FILE) up -d
 
 ## Stop Docker Container
 stop:
-	docker-compose -f docker/docker-compose.yml down
-
-## Stop Docker Container (image for with only CPU)
-stop-cpu:
-	docker-compose -f docker/docker-compose-cpu.yml down
+	docker-compose -f $(COMPOSE_FILE) down
 
 ## Make Dataset
 data:
