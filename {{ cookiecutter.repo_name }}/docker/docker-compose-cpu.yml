@@ -1,6 +1,6 @@
 version: '3'
 services:
-   jupyterlab-server-cpu:
+   jupyterlab-server:
       container_name: jupyterlab-server
       build: ..
       ports:
