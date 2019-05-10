@@ -1,6 +1,6 @@
 DEEP_LEARNING_FRAMEWORKS=$(awk '/#<START>/{flag=1;next}/#<END>/{flag=0}flag' ../deep_learning_requirements.txt | egrep -v "^\s*(#|$)")
-CUDA_VERSION=$(grep -oP "CUDA=\K.*" ../deep_learning_requirements.txt)
-CUDNN_VERSION=$(grep -oP "CUDNN=\K.*" ../deep_learning_requirements.txt)
+CUDA_VERSION=$(perl -nle "print $& while m{CUDA=\K.*}g" ../deep_learning_requirements.txt)
+CUDNN_VERSION=$(perl -nle "print $& while m{CUDNN=\K.*}g" ../deep_learning_requirements.txt)
 ALL_MODULES="python $DEEP_LEARNING_FRAMEWORKS"
 echo "> downloading dockerfile generator"
 git clone https://github.com/ufoym/deepo.git

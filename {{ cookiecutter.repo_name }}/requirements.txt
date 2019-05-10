@@ -1,7 +1,6 @@
-# install dask-complete for high performance distributed stuff
-dask[complete]
-
 # useful data science libraries
+pandas
+numpy
 fastai
 scipy
 cloudpickle
@@ -14,3 +13,4 @@ missingno
 lightgbm
 tqdm
 category_encoders
+pyarrow
