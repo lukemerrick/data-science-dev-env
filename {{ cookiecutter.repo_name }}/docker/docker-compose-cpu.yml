@@ -1,7 +1,7 @@
 version: '3'
 services:
-   jupyterlab-server:
-      container_name: jupyterlab-server
+   jupyterlab-server-{{cookiecutter.repo_name}}:
+      container_name: jupyterlab-{{cookiecutter.repo_name}}
       build: ..
       ports:
          - "127.0.0.1::8888:8888"
