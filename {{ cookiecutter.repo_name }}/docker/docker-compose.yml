@@ -1,6 +1,6 @@
 version: '3'
 services:
-   jupyterlab-server-gpu-{{cookiecutter.repo_name}}:
+   jupyterlab-server-{{cookiecutter.repo_name}}:
       container_name: jupyterlab-server-{{cookiecutter.repo_name}}
       build: ..
       ports:
